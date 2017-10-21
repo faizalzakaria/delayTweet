@@ -15,7 +15,8 @@
     "twit": "^2.2.9",
     "uuid": "^3.1.0",
     "node-tweet-stream": "^2.0.1",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "node-resque": "^4.0.9"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
