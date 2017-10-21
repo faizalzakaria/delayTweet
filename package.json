@@ -1,0 +1,23 @@
+{
+  "name": "tweetapi",
+  "version": "1.0.0",
+  "description": "Tweet Api",
+  "main": "index.js",
+  "scripts": {
+    "start_dev": "nodemon server.js"
+  },
+  "author": "Faizal Zakaria",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "body-parser": "^1.18.2",
+    "ws": "^3.2.0",
+    "twit": "^2.2.9",
+    "uuid": "^3.1.0",
+    "node-tweet-stream": "^2.0.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
