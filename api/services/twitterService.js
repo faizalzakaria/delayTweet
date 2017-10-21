@@ -3,7 +3,7 @@
 const Twit = require('twit');
 
 const locationBoxDelta = 5
-const streams = []
+const streams = {}
 
 const client = new Twit({
   consumer_key: 'GBE5IyAQZxt5sF7OfVcjA',
@@ -12,7 +12,7 @@ const client = new Twit({
   access_token_secret: 'oXDBkTVVJTbds0iHKKnTtXWKOaXitkonsxOtTc61kM'
 })
 
-exports.filterTweets = function(location) {
+exports.filterTweets = function(uuid, location, callback) {
   const locations = [
     `${location.lng - locationBoxDelta}`,
     `${location.lat - locationBoxDelta}`,
@@ -22,15 +22,25 @@ exports.filterTweets = function(location) {
 
   console.log(locations)
   const stream = client.stream("statuses/filter", { locations: locations })
-  stream.on('tweet', function(event) {
-    console.log(event && event.text)
+  stream.on('tweet', function(tweet) {
+    if (tweet) {
+      console.log(uuid, ':', tweet.text)
+
+      if (callback)
+        callback(tweet)
+    }
   })
-  streams.push(stream)
+  streams[uuid] = stream
 }
 
-exports.stopAllStreams = function() {
-  streams.forEach (function(stream) {
-    console.log('stopping ...')
-    stream.stop()
+exports.stopAllStreams = function () {
+  streams.keys.forEach (function(uuid) {
+    streams[uuid].stop()
+    console.log('Stopped ...')
   })
+}
+
+exports.stopStream = function (uuid) {
+  streams[uuid].stop()
+  console.log("Stopped stream", uuid)
 }
