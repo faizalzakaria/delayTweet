@@ -4,7 +4,7 @@ const logger = require(__basedir + '/app/services/logger')
 const NR = require('node-resque')
 const WebSocket = require('ws')
 
-const DELAY = __config.app.tweedDelay
+const DELAY = __config.app.tweetDelay
 const QUEUENAME = 'tweet'
 
 /*
@@ -54,7 +54,11 @@ exports.connectQueue = function () {
 
 exports.enqueueTweet = function (uuid, tweet) {
   if (connected) {
-    queue.enqueueIn(DELAY, QUEUENAME, 'tweet', [uuid, tweet])
+    if (DELAY > 0) {
+      queue.enqueueIn(DELAY, QUEUENAME, 'tweet', [uuid, tweet])
+    } else {
+      queue.enqueue(QUEUENAME, 'tweet', [uuid, tweet])
+    }
     logger.log(TAG, `enqueued -- ${uuid} ${tweet.text}`)
   }
 }

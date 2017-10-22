@@ -16,7 +16,7 @@ exports.addRequest = function (uuid, location) {
 exports.getRequest = function (uuid, callback) {
   client.get(uuid, function (err, reply) {
     if (err) {
-      console.log(err)
+      logger.log(TAG, err)
     } else {
       const location = JSON.parse(reply)
 

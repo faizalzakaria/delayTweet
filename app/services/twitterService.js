@@ -3,12 +3,14 @@ const TAG = 'TWITTERSERVICE'
 const logger = require(__basedir + '/app/services/logger')
 const Twit = require('twit')
 
-const locationBoxDelta = 5
+const locationBoxDelta = __config.app.locationBoxDelta
 const streams = {}
 
 const client = new Twit(__config.twitter)
 
 exports.filterTweets = function (uuid, location, callback) {
+  logger.log(TAG, 'Starting Tweets stream for ' + uuid)
+
   const locations = [
     `${location.lng - locationBoxDelta}`,
     `${location.lat - locationBoxDelta}`,

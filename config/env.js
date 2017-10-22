@@ -1,7 +1,8 @@
 const config = {
   production: {
     app: {
-      tweetDelay: 24 * 60 // in minute
+      tweetDelay: 24 * 60, // in minute
+      locationBoxDelta: 0.01 // In degree, delta for the bounding box.
     },
     redis: {
       host: '127.0.0.1',
@@ -30,7 +31,8 @@ const config = {
   },
   default: {
     app: {
-      tweetDelay: 24 * 60 // in minute
+      tweetDelay: 24 * 60, // in minute
+      locationBoxDelta: 0.01 // In degree, delta for the bounding box.
     },
     redis: {
       host: '127.0.0.1',
