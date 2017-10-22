@@ -4,7 +4,7 @@ Stream tweet with a delay of N. The N can be configured.
 
 ## Architecture
 
-
+![Briefly architecture](https://user-images.githubusercontent.com/3461316/31861108-8751fec4-b759-11e7-8225-55197e905670.png)
 
 ## Code Structures
 
