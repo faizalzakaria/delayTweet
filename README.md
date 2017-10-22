@@ -8,7 +8,7 @@ Stream tweet with a delay of N. The N can be configured.
 
 ## Code Structures
 
-- app: All logics are in 
+- app: All logics are in here.
 - config: All non app code is here, mostly around boot up, env, routes etc.
 
 ## Pre-requisites
@@ -33,6 +33,7 @@ Stream tweet with a delay of N. The N can be configured.
 ## TODO
 
 - [ ] Add test
+- [ ] Production environment
 - [ ] Deployment
 
 </details>
