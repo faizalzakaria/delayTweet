@@ -19,6 +19,10 @@ var config = {
         database:  0,
         namespace: 'resque'
       }
+    },
+    websocket: {
+      host: '127.0.0.1',
+      port: 8080
     }
   },
   default: {
@@ -41,6 +45,10 @@ var config = {
         database:  0,
         namespace: 'resque'
       }
+    },
+    websocket: {
+      host: '127.0.0.1',
+      port: 8080
     }
   }
 }

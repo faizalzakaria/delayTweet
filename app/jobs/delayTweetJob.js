@@ -13,7 +13,8 @@ const connectionDetails = __config.resque.connectionDetails
 /*
  * Worker WebSocket
  */
-const ws = new WebSocket('ws://127.0.0.1:8080/worker')
+const wsUrl = `ws://${__config.websocket.host}:${__config.websocket.port}/worker`
+const ws = new WebSocket(wsUrl)
 
 ws.on('message', function incoming(data) {
   console.log(data)

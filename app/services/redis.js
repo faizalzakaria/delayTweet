@@ -1,6 +1,6 @@
 const redis = require("redis")
 
-const client = redis.createClient({ host: '127.0.0.1', port: 6379 })
+const client = redis.createClient(__config.redis)
 
 client.on("error", function (err) {
   console.log("Error " + err);

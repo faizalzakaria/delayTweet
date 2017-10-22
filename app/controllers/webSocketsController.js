@@ -12,7 +12,8 @@ exports.create = function(req, res) {
 
   const location = { lat: lat, lng: lng }
   const uuid = uuidv1()
-  const wsUrl = `ws://127.0.0.1:8080/${uuid}`
+
+  const wsUrl = `ws://${__config.websocket.host}:${__config.websocket.port}/${uuid}`
 
   redisClient.addRequest(uuid, location)
 

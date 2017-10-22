@@ -32,7 +32,7 @@ const WebSocket = require('ws')
 const twitterService = require('./app/services/twitterService')
 const redisClient = require('./app/services/redis')
 
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: __config.websocket.port });
 
 var clients = {}
 
