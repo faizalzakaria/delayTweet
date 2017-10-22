@@ -1,10 +1,22 @@
 ## DelayTweet
 
-Stream tweet with a delay of N. The N can be configured.
+Stream tweet with a delay of N minutes.
 
 ## Architecture
 
 ![Briefly architecture](https://user-images.githubusercontent.com/3461316/31861108-8751fec4-b759-11e7-8225-55197e905670.png)
+
+- Get a uniq websocket to listen to, through this API, POST `/webSockets`, with `lat` and `lng` as parameters.
+- Open a connection using this websocket.
+- Receive tweets within your location (bounding box) with a delay of N minutes.
+
+#### Bounding box.
+
+If you are in Kuala Lumpur (3.1390, 101.6869), then your bounding box would be something like,
+
+```javascript
+[101.6869 - delta, 3.1390 - delta, 101.6869 + delta, 3.1390 + delta]
+```
 
 ## Code Structures
 
