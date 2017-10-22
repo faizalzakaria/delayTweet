@@ -20,7 +20,16 @@ Stream tweet with a delay of N. The N can be configured.
 
 #### For server
 
-- `npm run dev`
+```bash
+npm run dev:all
+```
+
+or (Run worker seperately)
+
+```
+npm run dev
+npm run jobs
+```
 
 #### For test client
 
