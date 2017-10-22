@@ -1,6 +1,6 @@
 ## DelayTweet
 
-Stream tweet with a delay of N minutes.
+Stream tweet with a delay of N minutes in a given location (lat, lng).
 
 ## Architecture
 
