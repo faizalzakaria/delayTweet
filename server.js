@@ -1,9 +1,4 @@
-const path = require('path')
-const env = require('./config/env')
-
-/* Global variables */
-global.__basedir = path.resolve(__dirname)
-global.__config  = env.get(process.env.NODE_ENV)
+require('./environment')
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -78,6 +73,7 @@ wss.on('connection', function connection(ws, req) {
  * Worker & Scheduler (Optional)
  * Or you can run seperately
  */
-delayTweetJob.startWorker()
-delayTweetJob.startScheduler()
-
+if (process.env.RUN_JOBS) {
+  delayTweetJob.startWorker()
+  delayTweetJob.startScheduler()
+}
