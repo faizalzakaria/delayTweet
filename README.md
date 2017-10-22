@@ -37,6 +37,17 @@ If you are in Kuala Lumpur (3.1390, 101.6869), then your bounding box would be s
   }
 ```
 
+- locationBoxDelta, change this to change the delta of the bounding box.
+```javascript
+  default: {
+    app: {
+      ..
+      locationBoxDelta: 0.01 // In degree, delta for the bounding box.
+    }
+    ..
+  }
+```
+
 ## Pre-requisites
 
 - Node version 8.7.0 (Only tested with this)
