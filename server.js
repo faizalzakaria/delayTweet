@@ -1,17 +1,23 @@
+const path = require('path')
+const env = require('./config/env')
+
+/* Global variables */
+global.__basedir = path.resolve(__dirname)
+global.__config  = env.get(process.env.NODE_ENV)
+
 const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000
-const routes = require('./api/routes/tweetRoutes')
 const bodyParser = require('body-parser')
-const twitterService = require('./api/services/twitterService')
-const redisClient = require('./api/services/redis')
-const resqueClient = require('./api/services/resque')
+const routes = require('./config/routes')
+
+const port = process.env.PORT || 3000
+const app = express()
 
 /*
  * Http server
  */
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 routes(app)
 app.listen(port)
@@ -19,9 +25,17 @@ app.listen(port)
 console.log("Server run on PORT", port)
 
 /*
+ * Jobs
+ */
+const delayTweetJob = require('./app/jobs/delayTweetJob')
+delayTweetJob.connectQueue()
+
+/*
  * Websocket
  */
-const WebSocket = require('ws');
+const WebSocket = require('ws')
+const twitterService = require('./app/services/twitterService')
+const redisClient = require('./app/services/redis')
 
 const wss = new WebSocket.Server({ port: 8080 });
 
@@ -34,7 +48,7 @@ wss.on('connection', function connection(ws, req) {
   if (uuid && uuid != '/worker') {
     redisClient.getRequest(uuid, function (location) {
       twitterService.filterTweets(uuid, location, function (tweet) {
-        return resqueClient.enqueueTweet(uuid, tweet)
+        return delayTweetJob.enqueueTweet(uuid, tweet)
       })
     })
   }
@@ -59,3 +73,11 @@ wss.on('connection', function connection(ws, req) {
 
   clients[uuid] = ws
 })
+
+/*
+ * Worker & Scheduler (Optional)
+ * Or you can run seperately
+ */
+delayTweetJob.startWorker()
+delayTweetJob.startScheduler()
+

@@ -1,10 +1,7 @@
-'use strict'
+const uuidv1 = require('uuid/v1')
+const redisClient = require(__basedir + '/app/services/redis')
 
-const redisClient = require('../services/redis')
-const twitterService = require('../services/twitterService')
-const uuidv1 = require('uuid/v1');
-
-exports.createTweet = function(req, res) {
+exports.create = function(req, res) {
   const { lat, lng } = req.body
 
   if (!lat || !lng) {

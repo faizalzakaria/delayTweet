@@ -4,7 +4,7 @@ const http = require("http");
 var options = {
   host: '127.0.0.1',
   port: 3000,
-  path: '/tweets',
+  path: '/webSockets',
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ var req = http.request(options, function(res) {
 
 req.on('error', function(e) {
   console.log('problem with request: ' + e.message);
-});
+})
 
 const location = { lat: 52.52, lng: 13.405 }
 
