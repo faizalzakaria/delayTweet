@@ -11,6 +11,20 @@ Stream tweet with a delay of N. The N can be configured.
 - app: All logics are in here.
 - config: All non app code is here, mostly around boot up, env, routes etc.
 
+## Configurations
+
+#### `config/env.js`
+
+- tweedDelay, change this for the delay needed. Defaulted to 24 hours.
+```javascript
+  default: {
+    app: {
+      tweetDelay: 24 * 60 // in minute
+    },
+    ...
+  }
+```
+
 ## Pre-requisites
 
 - Node version 8.7.0 (Only tested with this)
