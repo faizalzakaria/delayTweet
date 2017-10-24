@@ -28,6 +28,7 @@ If you are in Kuala Lumpur (3.1390, 101.6869), then your bounding box would be s
 #### `config/env.js`
 
 - tweedDelay, change this for the delay needed. Defaulted to 24 hours.
+
 ```javascript
   default: {
     app: {
@@ -38,6 +39,7 @@ If you are in Kuala Lumpur (3.1390, 101.6869), then your bounding box would be s
 ```
 
 - locationBoxDelta, change this to change the delta of the bounding box.
+
 ```javascript
   default: {
     app: {
@@ -48,9 +50,16 @@ If you are in Kuala Lumpur (3.1390, 101.6869), then your bounding box would be s
   }
 ```
 
+## Requirements
+
+| What | Notes |
+| ---- | ----- |
+| node version 8.7.0 | Only tested with this version |
+| Redis 3.0+,   | `brew install redis` or `docker pull redis && docker run --name redis -p 6379:6379 -d redis`  |
+
+
 ## Pre-requisites
 
-- Node version 8.7.0 (Only tested with this)
 - `yarn install`
 
 ## How to run
@@ -69,6 +78,13 @@ npm run jobs
 ```
 
 #### For test client
+
+Using web
+
+- `node run client`
+- `http://localhost:8081` or `http://localhost:8081?lat=3.1390&lng=101.6869`
+
+or using console
 
 - `node client/test`
 
