@@ -1,6 +1,6 @@
 const webSocketsController = require(__basedir + '/app/controllers/webSocketsController')
 
 module.exports = function (app) {
-  app.route('/webSockets')
+  app.route('/websockets')
     .post(webSocketsController.create)
 }

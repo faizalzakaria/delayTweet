@@ -31,7 +31,7 @@ const config = {
   },
   default: {
     app: {
-      tweetDelay: 24 * 60, // in minute
+      tweetDelay: 1, // in minute
       locationBoxDelta: 0.01 // In degree, delta for the bounding box.
     },
     redis: {
