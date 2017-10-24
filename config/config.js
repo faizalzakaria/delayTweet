@@ -32,7 +32,7 @@ const config = {
   default: {
     app: {
       tweetDelay: 1, // in minute
-      locationBoxDelta: 0.01 // In degree, delta for the bounding box.
+      locationBoxDelta: 0.1 // In degree, delta for the bounding box.
     },
     redis: {
       host: '127.0.0.1',

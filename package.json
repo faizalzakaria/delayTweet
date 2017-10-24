@@ -4,10 +4,11 @@
   "description": "Tweet Api",
   "main": "index.js",
   "scripts": {
+    "client": "cd client && webpack-dev-server",
     "dev:all": "NODE_ENV=development RUN_JOBS=true nodemon server.js",
     "dev": "NODE_ENV=development nodemon server.js",
     "jobs": "NODE_ENV=development nodemon jobs.js",
-    "lint": "standard"
+    "lint": "standard app/* config/*"
   },
   "author": "Faizal Zakaria",
   "license": "MIT",
@@ -19,11 +20,16 @@
     "uuid": "^3.1.0",
     "node-tweet-stream": "^2.0.1",
     "redis": "^2.8.0",
-    "node-resque": "^4.0.9"
+    "node-resque": "^4.0.9",
+    "cors": "~2.8.4"
   },
   "devDependencies": {
     "nodemon": "^1.12.1",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3",
+    "html-webpack-plugin": "^2.29.0",
+    "websocket-client": "^1.0.0"
   },
   "engines": {
     "node": "~> 8.7.0"
