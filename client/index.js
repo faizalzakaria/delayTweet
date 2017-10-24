@@ -47,8 +47,8 @@ req.on('error', function (e) {
   console.log('problem with request: ' + e.message)
 })
 
-const lat = getParameterByName('lat') || 52.52
-const lng = getParameterByName('lng') || 13.405
+const lat = parseFloat(getParameterByName('lat')) || 52.52
+const lng = parseFloat(getParameterByName('lng')) || 13.405
 const location = { lat: lat, lng: lng }
 
 req.write(JSON.stringify(location))

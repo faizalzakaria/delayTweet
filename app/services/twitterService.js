@@ -16,7 +16,7 @@ exports.filterTweets = function (uuid, location, callback) {
     `${location.lat + locationBoxDelta}`
   ]
 
-  logger.log(TAG, 'Starting Tweets stream for ' + uuid + locations)
+  logger.log(TAG, 'Starting Tweets stream for ' + uuid + ' ' + locations)
 
   const stream = client.stream('statuses/filter', { locations: locations })
   stream.on('tweet', function (tweet) {

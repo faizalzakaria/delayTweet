@@ -55,8 +55,12 @@ wss.on('connection', function connection (ws, req) {
     const { targetUuid, msg } = JSON.parse(payload)
     const client = clients[targetUuid]
     if (client) {
-      console.log('sending: %s to %s', msg, targetUuid)
-      client.send(msg)
+      try {
+        client.send(msg)
+        console.log('Successfully: %s to %s', msg, targetUuid)
+      } catch(e) {
+        console.log('Failed to send: %s to %s', msg, targetUuid)
+      }
     }
   })
 
