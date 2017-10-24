@@ -22,6 +22,12 @@ const printText = function (text) {
   tweetsDiv.appendChild(hrNode)
 }
 
+/* https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript */
+const getParameterByName = function (name) {
+  var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
 const req = http.request(options, function (res) {
   res.setEncoding('utf8')
 
@@ -41,7 +47,9 @@ req.on('error', function (e) {
   console.log('problem with request: ' + e.message)
 })
 
-const location = { lat: 52.52, lng: 13.405 }
+const lat = getParameterByName('lat') || 52.52
+const lng = getParameterByName('lng') || 13.405
+const location = { lat: lat, lng: lng }
 
 req.write(JSON.stringify(location))
 req.end()

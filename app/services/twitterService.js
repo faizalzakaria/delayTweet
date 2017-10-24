@@ -9,14 +9,14 @@ const streams = {}
 const client = new Twit(__config.twitter)
 
 exports.filterTweets = function (uuid, location, callback) {
-  logger.log(TAG, 'Starting Tweets stream for ' + uuid)
-
   const locations = [
     `${location.lng - locationBoxDelta}`,
     `${location.lat - locationBoxDelta}`,
     `${location.lng + locationBoxDelta}`,
     `${location.lat + locationBoxDelta}`
   ]
+
+  logger.log(TAG, 'Starting Tweets stream for ' + uuid + locations)
 
   const stream = client.stream('statuses/filter', { locations: locations })
   stream.on('tweet', function (tweet) {
