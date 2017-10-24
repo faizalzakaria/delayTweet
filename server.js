@@ -65,7 +65,7 @@ wss.on('connection', function connection (ws, req) {
     twitterService.stopStream(uuid)
   })
 
-  ws.send(`Connected ${req.url}`)
+  ws.send(`Connected ${req.url}, you will receive first tweet in ${__config.app.tweetDelay} (if there is any)`)
 
   clients[uuid] = ws
 })
